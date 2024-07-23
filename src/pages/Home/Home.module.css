@@ -1,0 +1,22 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.button-add {
+    justify-content: center;
+    position: absolute;
+    bottom: 10%;
+    width: 75px;
+    height: 75px;
+    background-color: #438883;
+    border-radius: 50%;
+    border: none;
+}
