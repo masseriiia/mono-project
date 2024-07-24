@@ -7,13 +7,15 @@
 .content {
     display: flex;
     flex-grow: 1;
+    flex-direction: column;
     justify-content: center;
 }
 
 .button-add {
     justify-content: center;
     position: absolute;
-    bottom: 10%;
+    right: 37%;
+    bottom: 6%;
     width: 75px;
     height: 75px;
     background-color: #438883;
