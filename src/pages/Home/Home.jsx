@@ -7,7 +7,16 @@ import styles from './Home.module.css'
 export function Home() {
     return (
         <div className={styles['home']}>
-            <Header/>
+            <Header className={styles['header']}/>
+            <div className={styles['sidebar']}>
+                <div>
+                    <div className={styles['greetings']}>Good afternoon,</div>
+                    <div className={styles['users']}>Random User</div>
+                </div>
+                <Button className={styles['button-push']}>
+                    <img src="./push.svg" alt="" />
+                </Button>
+            </div>
             <div className={styles['content']}>
                 <Balance/>
                 <History/>
