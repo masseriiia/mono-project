@@ -1,0 +1,26 @@
+.sidebar {
+    padding-top: 43px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 90px;
+}
+
+.button-push{
+    border-radius: 7px;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+}
+
+.expense-title {
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+}

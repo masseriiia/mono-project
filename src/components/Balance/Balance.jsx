@@ -1,6 +1,11 @@
+import { useContext } from 'react'
 import styles from './Balance.module.css'
+import { UserContext } from '../../context/user.context'
+import { useLocalStorage } from '../../hooks/use-localstorage'
 
 export function Balance() {
+    const [items, setItems] = useLocalStorage('data')
+    
     return (
         <div className={styles['balance']}>
             <div className={styles['total-balance']}>
@@ -8,7 +13,7 @@ export function Balance() {
                     Total Balance
                     <img src="./chevron-down.svg" alt="" />  
                 </h3>
-                <p className={styles['total-price']}>$ 2,548.00</p>
+                <p className={styles['total-price']}>$ {items?.balance}</p>
             </div>
             <div className={styles['transactions']}>
                 <div className={styles['income']}>

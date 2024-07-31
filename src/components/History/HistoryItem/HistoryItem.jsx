@@ -1,6 +1,8 @@
+import { useLocalStorage } from '../../../hooks/use-localstorage'
 import styles from './HistoryItem.module.css'
 
-export function HistoryItem() {
+export function HistoryItem({item}) {
+
     return (
             <div className={styles['history-item']}>
                 <div className={styles['history-image']}>
