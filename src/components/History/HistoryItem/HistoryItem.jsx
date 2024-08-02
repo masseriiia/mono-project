@@ -10,10 +10,14 @@ export function HistoryItem({item}) {
                 </div>
                 <div className={styles['history-info']}>
                     <div>
-                        <p className={styles['history-name']}>Paypal</p>
-                        <p className={styles['history-date']}>Jan 30, 2022</p>
+                        <p className={styles['history-name']}>{item.name}</p>
+                        <p className={styles['history-date']}>{item.date}</p>
                     </div>
-                    <p className={styles['history-price']}>+ $ 1,406.00</p>
+                    <p className={`${styles['history-price']} ${item.type === 'income' ? styles['price-income'] : styles['price-expense']}`}>
+                        {
+                            item.type === 'income' ? `+ $ ${item.amount}` : `- $ ${item.amount}`
+                        }
+                    </p>
                 </div>
             </div>
     )

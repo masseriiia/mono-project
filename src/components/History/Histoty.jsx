@@ -11,7 +11,9 @@ export function History() {
         <div className={styles['history']}>
             <h3 className={styles['history-title']}>Transactions history</h3>
             <div className={styles['histories']}>
-                <HistoryItem/>
+                { items.length !== 0 && (
+                    items.map((item, index) => <HistoryItem index={index} item={item}/>))
+                }
             </div>
         </div>
     )

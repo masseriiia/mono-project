@@ -42,5 +42,12 @@
 .history-price {
     font-weight: 600;
     font-size: 18px;
+}
+
+.price-income {
     color: #25a969;
+}
+
+.price-expense {
+    color: #f95b51;
 }
