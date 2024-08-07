@@ -1,78 +1,97 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import styles from './AddForm.module.css'
-import { initialState } from '../state'
 import { useLocalStorage } from '../../hooks/use-localstorage'
+
+const initialState = {
+    balanceInfo: {
+        balance: 0,
+        income: 0,
+        expenses: 0,
+    },
+    transactions: []
+}
 
 export function AddForm() {
 
-    const [items, setItems] = useLocalStorage('data')
-    const [formState, setFormState] = useState(initialState)
-    const [transactionType, setTransactionType] = useState('')
+    const [items, setItems, getItems] = useLocalStorage('data')
+    const [formState, setFormState] = useState(initialState.transactions)
+    const [transactionType, setTransactionType] = useState('expenses')
 
+    const getLocalItems = getItems() || []
+    const getLocalItem = getLocalItems.length > 0 ? getLocalItems[getLocalItems.length - 1] : initialState
+    console.log(getLocalItem)
 
-    const handleAddTransaction = (e) => {
-        if(e.target.id === 'expenses') {
-            setTransactionType(() => 'expenses')
-
-        } else if (e.target.id === 'income') {
-            setTransactionType(() => 'income')
-        }
+    const handleAddTransaction = (type) => {
+        setTransactionType(type)
     }
+
+    console.log(transactionType)
 
     const onChange = (e, field) => {
         setFormState(item => ({
             ...item,
             transactions: {
-            ...item.transactions, 
-            [field]: e.target.value
-            }
+                ...item.transactions,
+                [field]: e.target.value,
+                type: transactionType,
+                id: Date.now(), 
+                
+            },
         }))
+
     }
+    console.log(formState)
 
     const onSubmit = (e) => {
         e.preventDefault()
         if(formState.transactions.name !== '' && formState.transactions.date !== '' && formState.transactions.amount !== '' && transactionType === 'expenses') {
-            const newTransaction = {
-                ...formState.transactions,
-                amount: parseFloat(formState.transactions.amount),
-                type: transactionType
-            }
-            const newBalance = formState.balance - newTransaction.amount
-            const newExpenses = formState.expenses + newTransaction.amount
-    
+            setItems([...items, {...formState, balanceInfo: {
+                balance: getLocalItem.balanceInfo.balance - parseFloat(formState.transactions.amount),
+                income: getLocalItem.balanceInfo.income,
+                expenses: getLocalItem.balanceInfo.expenses + parseFloat(formState.transactions.amount),
+            }}])
             setFormState(item => ({
-                ...item,
-                balance: newBalance,
-                expenses: newExpenses
+                transactions:{
+                    name: '',
+                    amount: '',
+                    date: '',
+                    id: null,
+                    type: ''
+                }
             }))
-    
-            setItems([...items, {...newTransaction, balance: newBalance, expenses: newExpenses}])
+
         } else if(formState.transactions.name !== '' && formState.transactions.date !== '' && formState.transactions.amount !== '' && transactionType === 'income') {
-            const newTransaction = {
-                ...formState.transactions,
-                amount: parseFloat(formState.transactions.amount),
-                type: transactionType
-            }
-            const newBalance = formState.balance + newTransaction.amount
-            const newIncome = formState.income + newTransaction.amount
-    
+            setItems([...items, {...formState, 
+                balanceInfo: {
+                    balance: getLocalItem.balanceInfo.balance + parseFloat(formState.transactions.amount),
+                    income: getLocalItem.balanceInfo.income + parseFloat(formState.transactions.amount),
+                    expenses: getLocalItem.balanceInfo.expenses
+                },
+                transactions: {
+                    ...formState.transactions,
+                    type: transactionType
+                }
+                    }])
             setFormState(item => ({
-                ...item,
-                balance: newBalance,
-                income: newIncome
+                transactions:{
+                    name: '',
+                    amount: '',
+                    date: '',
+                    id: null,
+                    type: ''
+                }
             }))
-    
-            setItems([...items, {...newTransaction, balance: newBalance, income: newIncome}])
         }
     }
+    console.log(formState)
 
     return (
         <form className={styles['form']} onSubmit={onSubmit}>
             <div className={styles['form-buttons']}>
-                <button className={`${styles['form-input']} ${transactionType === 'expenses' ? styles['isActive'] : ''}`} type='button' id="expenses" onClick={(e) => handleAddTransaction(e)}>Expenses</button>
-                <button className={`${styles['form-input']} ${transactionType === 'income' ? styles['isActive'] : ''}`} type='button' id="income" onClick={(e) => handleAddTransaction(e)}>Income</button>
+                <button className={`${styles['form-input']} ${transactionType === 'expenses' ? styles['isActive'] : ''}`} type='button' id="expenses" onClick={() => handleAddTransaction('expenses')}>Expenses</button>
+                <button className={`${styles['form-input']} ${transactionType === 'income' ? styles['isActive'] : ''}`} type='button' id="income" onClick={() => handleAddTransaction('income')}>Income</button>
             </div>
             <div className={styles['form-row']}>
                 <label className={styles['form-name']} htmlFor="name">

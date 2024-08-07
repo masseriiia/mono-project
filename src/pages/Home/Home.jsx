@@ -4,9 +4,7 @@ import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
 import { History } from "../../components/History/Histoty";
 import styles from './Home.module.css'
-import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
-import { useLocalStorage } from "../../hooks/use-localstorage";
+
 
 export function Home() {
 
@@ -19,7 +17,7 @@ export function Home() {
                     <div className={styles['users']}>Random User</div>
                 </div>
                 <Button className={styles['button-push']}>
-                    <img src="./push.svg" alt="" />
+                    <img src="./push.svg" alt="Push" />
                 </Button>
             </div>
             <div className={styles['content']}>
@@ -27,7 +25,7 @@ export function Home() {
                 <History/>
                 <NavLink to='/add'>
                     <Button className={styles['button-add']}>
-                        <img src="./add.svg" alt="" />
+                        <img src="./add.svg" alt="Button add" />
                     </Button>
                 </NavLink >
 

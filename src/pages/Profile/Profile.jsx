@@ -20,39 +20,39 @@ export function Profile() {
                 <div className={styles['settings']}>
                     <div className={styles['setting-item']}>
                         <div className={styles['setting-diamond']}>
-                            <img src="./diamond.svg" width="33px" height="27px" alt="" />  
+                            <img src="./diamond.svg" width="33px" height="27px" alt="Invite Friends" />  
                         </div>
                         <p className={styles['setting-name']}>Invite Friends</p>
                     </div>
                     <div className={styles['setting-item']}>
                         <div className={styles['setting-image']}>
-                            <img src="./user.svg" alt="" />
+                            <img src="./user.svg" alt="Account info" />
                         </div>
                         <p className={styles['setting-name']}>Account info</p>
                     </div>
                     <div className={styles['setting-item']}>
                         <div className={styles['setting-image']}>
-                            <img src="./users.svg" alt="" />
+                            <img src="./users.svg" alt="Personal profile" />
                         </div>
                         <p className={styles['setting-name']}>Personal profile</p>
                     </div>
                     <div className={styles['setting-item']}>
                         <div className={styles['setting-image']}>
-                            <img src="./message.svg" alt="" />
+                            <img src="./message.svg" alt="Message center" />
                         </div>
                         <p className={styles['setting-name']}>Message center</p>
                     </div>
                     <div className={styles['setting-item']}>
                         <div className={styles['setting-image']}>
-                            <img src="./security.svg" alt="" />
+                            <img src="./security.svg" alt="Login and security" />
                         </div>
                         <p className={styles['setting-name']}>Login and security</p>
                     </div>
                     <div className={styles['setting-item']}>
                         <div className={styles['setting-image']}>
-                            <img src="./privace.svg" width="33px" height="27px" alt="" />  
+                            <img src="./privace.svg" width="33px" height="27px" alt="Data and privacy" />  
                         </div>
-                        <p className={styles['setting-name']}>IData and privacy</p>
+                        <p className={styles['setting-name']}>Data and privacy</p>
                     </div>
                 </div>
             </div>

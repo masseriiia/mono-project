@@ -11,7 +11,7 @@ export function AddExpense() {
             <div className={styles['sidebar']}>
                 <NavLink to='/'>
                     <Button className={styles['button-push']}>
-                        <img src="./chevron-left.svg" alt="" />
+                        <img src="./chevron-left.svg" alt="Push" />
                     </Button>
                 </NavLink>
                 <h3 className={styles['expense-title']}>Add Expense</h3>

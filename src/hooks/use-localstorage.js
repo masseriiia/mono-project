@@ -8,12 +8,16 @@ export function useLocalStorage(key) {
         if(res) {
             setData(res)
         }
-      }, [])
+    }, [])
 
-      const saveData = (newData) => {
+    const saveData = (newData) => {
         localStorage.setItem(key, JSON.stringify(newData))
         setData(newData)
     } 
 
-    return [data, saveData]  
+    const getData = () => {
+        return JSON.parse(localStorage.getItem(key))
+    }
+
+    return [data, saveData, getData]  
 } 
