@@ -1,0 +1,54 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button-add {
+    justify-content: center;
+    position: absolute;
+    right: 37%;
+    bottom: 6%;
+    width: 75px;
+    height: 75px;
+    background-color: #438883;
+    border-radius: 50%;
+    border: none;
+}
+
+.sidebar {
+    padding-top: 43px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 33px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-push{
+    border-radius: 7px;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.greetings {
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+}
+
+.users {
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+}

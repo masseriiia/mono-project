@@ -1,0 +1,18 @@
+.header {
+    position: relative;
+}
+
+.button-push{
+    border-radius: 7px;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.images {
+    position: absolute;
+    z-index: -99;
+    min-width: 426px;
+}
